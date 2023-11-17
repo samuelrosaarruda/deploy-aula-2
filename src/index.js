@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const knex = require('./conexao');
 const cors = require('cors');
@@ -11,6 +12,7 @@ app.get('/', async (req, res) => {
         const carros = await knex('carros');
         return res.json(carros);
     } catch (error) {
+        console.log(error);
         return res.status(500).json({ mensagem: 'Erro do servidor' });
     }
 
